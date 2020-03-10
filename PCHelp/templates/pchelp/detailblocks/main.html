@@ -1,0 +1,67 @@
+<script>
+	$("#back").on('click', function(){
+	console.log('Клик по кнопк назад');
+
+	//плавное исчезновение кнопок и задержка для дисплей none
+	$("#detailsblock").fadeOut(150);
+
+	setTimeout(function(){
+		$("#detailsblock").attr("style", "display:none;");
+	}, 150);
+
+	//плавное появление карточки
+	setTimeout(function(){
+	$(".parentspost").fadeIn(150);
+	},150);
+});
+</script>
+
+{% extends pagename%}
+
+{% block uslugi %}
+    {% for i in listuslugi%}
+        <div class="usluga">
+         <h3>{{i.nameWork}}</h3>
+        <p>{{ i.description }}</p>
+        <p>Стоимость:{{ i.price }}</p>
+      </div>
+
+    {% endfor %}
+{% endblock uslugi%}
+
+{% block comments %}
+    {% for i in listcomments%}
+        <div class="usluga">
+         <h4>{{ i.client }}</h4>
+        <p>{{ i.textcomment }}</p>
+        <p>Дата: {{ i.datecreation }}</p>
+      </div>
+    {% endfor %}
+{% endblock comments%}
+
+{% block ourteam %}
+    {% for i in listmasters%}
+            <div class="col card mt-3 mb-3 ml-auto mr-auto" style="max-width: 550px;">
+                <div class="row no-gutters">
+                    <div class="col-4">
+                      <img src="static/pchelp/img/{{i.profileimg}}" class="card-img" alt="..." style="border-radius: 50%; border-color: blue 10px">
+                    </div>
+
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-title">{{ i.firstname }}</p>
+                            <p class="card-text">{{ i.about }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+

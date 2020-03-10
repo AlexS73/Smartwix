@@ -1,0 +1,64 @@
+
+<div class=" btn-toolbar justify-content-between updetailblock">
+	<input class="mybutton" type="button" id="back" value = "Назад" onclick="back">
+
+    <input type="button" class="btn btn-outline-primary" value="Добавить комментарий" id="addcommentbtn">
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">  
+      <div class="usluga">
+
+         <form id="addcommentform">
+              <div class="form-group">
+                <input id="NumberComment" type="Text" class="form-control"  placeholder="Ваш номер">
+              </div>
+              <div class="form-group">
+                <input id="TextComment" type="Text" class="form-control" placeholder="Текст отзыва">
+              </div>
+         </form>
+
+          {% block comments %}
+
+          {% endblock comments%}
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    $('#addcommentbtn').on('click', function () {
+        console.log(this.value)
+        if (this.value =='Добавить комментарий'){
+	        $("#addcommentform").fadeIn(150);
+	        $('#addcommentbtn').val("Отправить");
+            //alert("Тест кнопки добавки коммента");
+        } else if(this.value =='Отправить'){
+
+            $.ajax({
+                type: "POST",
+                url:"detailblocks/addcomment",
+                data: {
+                'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                "NumberComment":$('#NumberComment').val(),
+                "TextComment":$('#TextComment').val(),
+                }, //тут информации с какой кнопки вызов и токен
+                success: function(data){alert(data)}
+	        });
+
+            $("#addcommentform").fadeOut(150);
+            $('#addcommentbtn').val("Добавить комментарий");
+        };
+
+
+});
+</script>
+

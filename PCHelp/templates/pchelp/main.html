@@ -1,0 +1,101 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{%block title%}Главная страница{%endblock title%}</title>
+    
+	<meta name="description" content="Компьютерная помощь в Набережных Челнах">
+	<meta name="keywords" content="it, курсы, новости, уроки">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" type="image/x icon" href="{%static 'pchelp/img/logo.ico'%}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'pchelp/css/main.css'%}">
+
+</head>
+<body>
+    <!-- Шапка -->
+    <nav class="navbar navbar-expand-md " id="navmain">
+        <div class="container-fluid row">
+                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 col-xl-4">
+                    <a href="#" class="navbar-brand">
+                    <img src="{%static 'pchelp/img/logo.png'%}" alt="logo.png">
+                    </a>
+                </div>
+            
+                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8 col-xl-8" >
+                    <p id="textup">Компьютерная помощь в Набережных Челнах</p>
+                </div>
+        </div>
+    </nav>
+    <!-- Шапка конец-->
+
+    <!-- Основной блок сайта	 -->      
+    <div class="container-fluid row" id="mainblock">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="slogan" > <h2>Мы поможем без лишних слов!</h2></div>
+
+
+        
+        <!-- тут будет левая часть сайта -->
+        {%block leftblock%}{%endblock leftblock%}
+
+        <!-- тут будет правая часть сайта -->
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 " id="mainform">
+     <h2>Оставьте заявку</h2>
+	<form class="form" action="#" method="post">
+	{% csrf_token %}
+
+        <div class="row">
+            <div class="col form-group">
+                <label for="exampleInputPassword1">Имя</label>
+                <input name="Name" type="text" maxlength="25" class="form-control" id="FirstName" placeholder="Александр" >
+            </div>
+
+{#            <div class="col form-group">#}
+{#                <label for="exampleInputPassword1">Фамилия</label>#}
+{#                <input name="SecondName" type="text" maxlength="25" class="form-control" id="Secondname" placeholder="Иванов" >#}
+{#            </div>#}
+        </div>
+
+	 	<div class="form-group">
+		  <label for="example-tel-input">Номер телефона</label>
+		    <input name="phone" id="phone" class="form-control" type="tel"  placeholder="+7(929)-123-4567">
+		</div>
+{##}
+{#	 	<div class="form-group">#}
+{#		    <label for="email">Адрес электронной почты</label>#}
+{#		    <input type="email" name="email"  class="form-control" id="email"  placeholder="email@exemple.com" pattern="[0-9]">#}
+{#	 	</div>#}
+
+		<div class="form-group">
+			<textarea name="message" class="form-control" type="text" maxlength="250" name="" rows="4" placeholder="Опишите проблему" id="message"></textarea>
+		</div>
+{#		<div class="form-group input-group mb-3">#}
+
+{#		  <select name="SelectFeedBack" class="custom-select" id="GroupSelect" placeholder#}
+{#		  = "Выберите удобный способ связи">#}
+{#			    <option value="3">Телефонный звонок</option>#}
+{#			    <option value="1">WhatsApp</option>#}
+{#			    <option value="2">Telegram</option>#}
+{#			    <option value="4">Email</option>#}
+{#		  </select>#}
+{##}
+{#		</div>#}
+
+{#		<small id="emailHelp" class="form-text text-muted">Мы не передаём ваши данные кому-либо еще.</small>#}
+        <input type="button" name="sendMail" class="mybutton" id="sendMail" value = "Отправить">
+
+	</form>
+
+</div>
+        <div id="messageblock">Тест</div>
+<script type="text/javascript" src="{% static 'pchelp/script/application.js' %}"></script>
+
+</body>
+</html>

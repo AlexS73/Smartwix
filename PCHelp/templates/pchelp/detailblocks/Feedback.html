@@ -1,0 +1,49 @@
+<div class="updetailblock">
+	<input class="mybutton" type="button" id="back" value = "Назад" onclick="back">
+    <p>FeedBack</p>
+</div>
+
+
+<div class="container">
+<form class="needs-validation" novalidate="">
+    {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Имя</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+
+
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Фамилия</label>
+            <input type="text" class="form-control" id="lastName"  value="" required="">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+		  <label for="example-tel-input">Номер телефона</label>
+		    <input name="phone" id="phone" class="form-control" type="tel"  placeholder="+7(929)-123-4567">
+		</div>
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Пожалуйста введите свой Email.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Адрес <span class="text-muted">(Optional)</span></label>
+          <input type="text" class="form-control" id="address" placeholder="г. Набережные Челны д.1 кв.1">
+        </div>
+
+        <div class="form-group">
+			<textarea name="message" class="form-control" type="text" maxlength="600" name="" rows="4" placeholder="Ваше сообщение" id="message"></textarea>
+		</div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Нажмите для отправки</button>
+      </form></div>

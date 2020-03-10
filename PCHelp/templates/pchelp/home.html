@@ -1,0 +1,44 @@
+{% extends 'pchelp/main.html'%}
+{%block title%}Компьютерная помощь{%endblock%}
+{% load static %}
+{%block leftblock%}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-9 row " id="left">
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="Uslugi">
+        <div class="post" id="uslusgi"><p><img src="{%static 'pchelp/img/uslugi.png'%}" alt=""></p><p>Услуги</p></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="WhyWe">
+        <div class="post" id="we"><p><img src="{%static 'pchelp/img/WhyWe.png'%}" alt=""></p><p>Почему мы?</p></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="Comments">
+        <div class="post" id="comments"><p><img src="{%static 'pchelp/img/comments.png'%}" alt=""></p><p>Отзывы</p></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="Feedback">
+        <div class="post" id="feedback"><p><img src="{%static 'pchelp/img/Feedback.png'%}" alt=""></p><p>Обратная связь</p></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="OurTeam">
+        <div class="post" id="team"><p><img src="{%static 'pchelp/img/OurTeam.png'%}" alt=""></p><p>Наша команда</p></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center parentspost"
+        data-file="Promo">
+        <div class="post" id="promo"><p><img src="{%static 'pchelp/img/Promo.png'%}" alt=""></p><p>Акции</p></div>
+    </div>
+    
+    <div  id="detailsblock">
+        <div id="indetailsblock" class="indetailsblock">
+            детальыныйблок
+        </div>
+    </div>
+
+</div>
+{%endblock leftblock%}
