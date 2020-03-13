@@ -71,6 +71,11 @@
     <div id="messageblock">Тест</div>
     <script type="text/javascript" src="{% static 'pchelp/script/jquery.maskedinput.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'pchelp/script/application.js' %}"></script>
-
+    <script>
+       $(function(){
+      //2. Получить элемент, к которому необходимо добавить маску
+      $("#phone").mask("8(999) 999-9999");
+    });
+    </script>
 </body>
 </html>

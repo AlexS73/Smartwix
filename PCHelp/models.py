@@ -73,7 +73,7 @@ class Client(models.Model):
         verbose_name = 'Клиент'
 
     def __str__(self):
-        return self.firstname + ' ' + self.numberphone
+        return self.firstname
 
 #########################################################################
 class Bid(models.Model):
