@@ -25,7 +25,6 @@ for (let i in all){
 		}
 	});
 
-
 	//плавное исчезновение кнопок и задержка для дисплей none
 	$(".parentspost").fadeOut(150);
 
@@ -42,17 +41,14 @@ for (let i in all){
 }
 
 //-----Правая сторона
-
 //пока что выключили кнопку отправки формы
 // document.getElementById('sendMail').onclick = function(event){
 // 	event.preventDefault();
 // };
 
 $('#sendMail').on('click', function(){
-
 	// event.preventDefault();
-
-		$.ajax({
+	$.ajax({
 		type: "POST",
 		url:"createbid",
 		data: {
@@ -63,10 +59,10 @@ $('#sendMail').on('click', function(){
 			//'Email':$('#email').val(),
 			'Message':$('#message').val(),
 			//'GroupSelect':$('#GroupSelect').val(),
-		},
+			},
 		//тут информации с какой кнопки вызов и токен
 		 success: function(data){alert(data)}
-	});
+		});
 
 });
 //console.log(all);

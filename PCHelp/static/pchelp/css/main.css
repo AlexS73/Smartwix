@@ -3,6 +3,9 @@
 body, html{
 	font-family: 'Poppins', sans-serif;
 }
+h2{
+	font-size: 2.0em;
+}
 
 #navmain{
 	margin: 0 !important;
@@ -48,7 +51,7 @@ nav p{margin: 0 0 0 0 !important;}
 	padding: 0;
 	background: #FFFFFFFF;
 	position: relative;
-	
+
 }
 
 .post{
@@ -68,13 +71,17 @@ nav p{margin: 0 0 0 0 !important;}
 
 
 
-.updetailblock{
+.updetailblock {
+	padding: 1% 0;
 	position: sticky;
 	top: 0;
 	z-index: 1;
 	background-color: #FFF;
 	box-shadow: 0px 5px 12px 0px  rgba(120, 182, 252, .7607843137254902);
 	/*padding-top: 1%;*/
+	/*Ниже отлючаем стили bootstrap*/
+	margin-left: 0!important;
+	margin-right: 0!important;
 }
 .updetailblock input{
 	margin:1%;
@@ -113,9 +120,11 @@ a, form{
 	box-shadow: 0px 1px 1px 0px  rgba(26, 133, 249, .7607843137254902);
 	background-color: rgba(197, 223, 251, .5137254901960784);
 }
-
+.usluga:first-child{
+	margin-top: 4%;
+}
 .usluga:not(:last-child){
-	margin: 5px;
+	/*margin: 5px;*/
 	border-bottom: 1px solid rgba(195, 195, 199, 0.67);
 }
 
@@ -147,12 +156,18 @@ a, form{
 		max-height: 606px;
 		overflow-y: auto;
 	}
+
+
 }
 @media (min-width:992px){
 	#detailsblock{
 		max-height: 650px;
 		overflow-y: auto;
 	}
+			.mainform{
+		margin-top: 5%;
+	}
+
 }
 
 @media (max-width:800px){

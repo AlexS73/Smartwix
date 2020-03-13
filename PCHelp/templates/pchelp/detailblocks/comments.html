@@ -1,10 +1,12 @@
 
-<div class=" btn-toolbar justify-content-between updetailblock">
-	<input class="mybutton" type="button" id="back" value = "Назад" onclick="back">
+<div class="updetailblock row ">
+    <div class="col-3">
+        <input class="mybutton" type="button" id="back" value = "Назад" onclick="back">
+    </div>
+    <div class="col-6 text-center"><p>Оставьте свой отзыв</p></div>
 
-    <input type="button" class="btn btn-outline-primary" value="Добавить комментарий" id="addcommentbtn">
+    <div class="col-3 text-right"><input type="button" class="btn btn-outline-primary" value="+" id="addcommentbtn"></div>
 </div>
-
 
 
 
@@ -37,7 +39,7 @@
 
     $('#addcommentbtn').on('click', function () {
         console.log(this.value)
-        if (this.value =='Добавить комментарий'){
+        if (this.value =='+'){
 	        $("#addcommentform").fadeIn(150);
 	        $('#addcommentbtn').val("Отправить");
             //alert("Тест кнопки добавки коммента");
@@ -55,7 +57,7 @@
 	        });
 
             $("#addcommentform").fadeOut(150);
-            $('#addcommentbtn').val("Добавить комментарий");
+            $('#addcommentbtn').val("+");
         };
 
 
