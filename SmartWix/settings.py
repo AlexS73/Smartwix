@@ -25,7 +25,7 @@ SECRET_KEY = 'kdd078mn+r3(^co&z7^(vg+xwri2_lztgmhbmj0qw6dmlybz3y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.16","127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "185.4.75.254"]
 
 
 # Application definition
@@ -121,4 +121,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Настройки бота
-TOKEN = '1020021516:AAGd6g5b8jv25b2z9oLba7eVoi4NU3e4sw4'

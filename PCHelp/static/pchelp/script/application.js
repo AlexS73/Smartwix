@@ -26,16 +26,16 @@ for (let i in all){
 	});
 
 	//плавное исчезновение кнопок и задержка для дисплей none
-	$(".parentspost").fadeOut(150);
+	$(".parentspost").fadeOut(250);
 
 	setTimeout(function(){
 		$(".parentspost").attr("style", "display:none;");
-	}, 150);
+	}, 250);
 
 	//плавное появление карточки
 	setTimeout(function(){
-	$("#detailsblock").fadeIn(150);
-	},150);
+	$("#detailsblock").fadeIn(250);
+	},250);
 
 	}
 }
@@ -47,7 +47,41 @@ for (let i in all){
 // };
 
 $('#sendMail').on('click', function(){
-	// event.preventDefault();
+
+	let inputname = document.getElementById("FirstName");
+	let phoneinput = document.getElementById("phone");
+	let messageiput = document.getElementById("message");
+	let mistake = false; // переменная для наличия ошибки
+
+	if (inputname.value.trim().length < 2){
+		mistake = true;
+		inputname.classList.add("mistakeform");
+		inputname.title = "Слишком короткое имя!";
+	}else {
+		inputname.classList.remove("mistakeform");
+		inputname.title = "";
+	};
+
+	if(phoneinput.value.trim().length != 16){
+		mistake = true;
+		phoneinput.classList.add("mistakeform");
+		phoneinput.title = "Некорректный телефон!";
+	}else {
+		phoneinput.classList.remove("mistakeform");
+		phoneinput.title = "";
+	};
+
+	if(messageiput.value.trim().length < 10){
+		mistake = true;
+		messageiput.classList.add("mistakeform");
+		messageiput.title = "Описание должно содержать более 10 символов!";
+	}else {
+		messageiput.classList.remove("mistakeform");
+		messageiput.title = "";
+	};
+
+	if (mistake){return}; //Если есть ошибка - возврат
+
 	$.ajax({
 		type: "POST",
 		url:"createbid",
@@ -63,6 +97,4 @@ $('#sendMail').on('click', function(){
 		//тут информации с какой кнопки вызов и токен
 		 success: function(data){alert(data)}
 		});
-
 });
-//console.log(all);

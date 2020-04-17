@@ -2,12 +2,13 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 import telebot
 from PCHelp.models import Staff
+from . import settingsbot
 
 class Command(BaseCommand):
     help = 'Телеграмм- бот pyTelegramBotAPI'
 
     def handle(self, *args, **options):
-        bot = telebot.TeleBot(settings.TOKEN)
+        bot = telebot.TeleBot(settingsbot.TOKEN)
         print(bot.get_me())
 
         @bot.message_handler(content_types=["text"])

@@ -145,6 +145,9 @@ a, form{
 	border: 1px solid #000
 }
 
+.mistakeform{
+	border-color: crimson;
+}
 
 @media (max-width:1024px){
 	.post img{

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .models import Work, Сomment, Client, Bid, FeedbackType , Staff
 
+from PCHelp.management.commands import settingsbot
 from telebot import types
 import telebot
 
@@ -57,6 +58,9 @@ def addcomment(request):
 
 def createbid(request):
     if request.method == "POST":
+        if 'createbid' in request.COOKIES:
+            return HttpResponse("Вы уже отправляли заявку.")
+
         Firstname = request._post['Firstname']
         # Lastname = request._post['Secondname']
         Phone = request._post['Phone']
@@ -67,31 +71,40 @@ def createbid(request):
         # test = FeedbackType.objects.get(id=int(GroupSelect))
         try:
             client = Client.objects.get(numberphone=Phone)  # ищем по телефону клиента в базе
-        except:
+        except:    #Если не нашли создаем нового через попытку
             try:
                 client = Client(firstname=Firstname, numberphone=Phone)
                 client.save()
             except:
-                return HttpResponse('Что то пошло не так')
+                return HttpResponse('Не удалось создать клиента.')
+
+        # Через попытку создаем новый объект заявки
         try:
             newbid = Bid(client=client, textbid=Message)
-            try:
-                # sendbidTelegram(Firstname, Lastname, Phone, Message, GroupSelect)
+
+            try:  # Через попытку отправляем уведомление в телегу
                 sendbidTelegram(Firstname, Phone, Message)
                 newbid.unloadTelegram = True
-                newbid.save()
             except:
-                pass
+                newbid.unloadTelegram = False
 
-            return HttpResponse('Заявка отправлена!')
+            try:
+                newbid.save()
+                response = HttpResponse('Заявка отправлена!')
+                response.set_cookie('createbid', True)
+            except:
+                response = HttpResponse('Заявка не отправлена!')
+                #response.set_cookie('createbid', False)
+
+            return response
         except:
-            return HttpResponse('Что то пошло не так')
+            return HttpResponse('Не удалось создать объект заявки.')
 
 
 # функция отправки сообщения в телеграм при создании заявки
 def sendbidTelegram(Firstname, Phone, Message):
-    bot = telebot.TeleBot('1020021516:AAGd6g5b8jv25b2z9oLba7eVoi4NU3e4sw4')
-
+    # bot = telebot.TeleBot('1020021516:AAGd6g5b8jv25b2z9oLba7eVoi4NU3e4sw4')
+    bot = telebot.TeleBot(settingsbot.TOKEN);
     markup = types.InlineKeyboardMarkup(row_width=1)
     item1 = types.InlineKeyboardButton("Принять", callback_data='take')
     textformessage = "Клиент <b>{}</b>; \nНомер телефона: <b>{}</b>;\nПроблема: \n{};".format(Firstname,Phone, Message)

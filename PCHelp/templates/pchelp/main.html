@@ -48,19 +48,20 @@
                 {% csrf_token %}
 
                 <div class="row">
-                    <div class="col form-group">
-                        <label for="exampleInputPassword1">Имя</label>
-                        <input name="Name" type="text" maxlength="25" class="form-control" id="FirstName" placeholder="Александр" >
+                     </div>
+                    <div class="form-group">
+                        <label for="Name">Имя</label>
+                        <input id="FirstName" class="form-control" name="Name" type="text" maxlength="25" placeholder="Александр" >
                     </div>
+
+
+                <div class="form-group">
+                  <label for="phone">Номер телефона</label>
+                    <input id="phone" class="form-control" name="phone" type="tel"  placeholder="+7(929)-123-4567">
                 </div>
 
                 <div class="form-group">
-                  <label for="example-tel-input">Номер телефона</label>
-                    <input name="phone" id="phone" class="form-control" type="tel"  placeholder="+7(929)-123-4567">
-                </div>
-
-                <div class="form-group">
-                    <textarea name="message" class="form-control" type="text" maxlength="250" name="" rows="4" placeholder="Опишите проблему" id="message"></textarea>
+                    <textarea  id="message" class="form-control" name="message" type="text" maxlength="250" name="" rows="4" placeholder="Опишите проблему" minlength="15"></textarea>
                 </div>
 
                 <input type="button" name="sendMail" class="mybutton" id="sendMail" value = "Отправить">
@@ -74,7 +75,7 @@
     <script>
        $(function(){
       //2. Получить элемент, к которому необходимо добавить маску
-      $("#phone").mask("8(999) 999-9999");
+      $("#phone").mask("+7(999)-999-9999");
     });
     </script>
 </body>
